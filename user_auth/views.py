@@ -150,8 +150,8 @@ class login(View):
 
             if user is not None:
                 auth.login(request, user)
-                messages.success(
-                    request, constants.ERROR['login_succesfully']['login'])
+                # messages.success(
+                #     request, constants.ERROR['login_succesfully']['login'])
                 return redirect('dashboard')
 
             else:
@@ -168,12 +168,12 @@ class logout(View):
 
     """
     def get(self, request):
-        return render(request, 'dashboard.html')
+        return redirect('login')
 
     def post(self, request):
         if request.method == 'POST':
             auth.logout(request)
-            messages.success(request, constants.ERROR['logout']['logout'])
+            messages.Error(request, constants.ERROR['logout']['logout'])
         return redirect('home')
 
 

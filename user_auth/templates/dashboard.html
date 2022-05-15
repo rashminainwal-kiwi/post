@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <! -- header -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Dashboard</title>
+
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    
+    header {
+      width: 100%;
+      background-color: skyblue;
+      overflow: auto;
+    }
+    
+    .navbar a {
+      float:right;
+      padding: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+      
+    }
+    
+    .navbar a:hover {
+      background-color: #000;
+    }
+    
+    .active {
+      background-color: #04AA6D;
+    }
+    
+    @media screen and (max-width: 500px) {
+      .navbar a {
+        float: none;
+        display: block;
+      }
+    }
+    .sidebar{
+      height:500px;
+
+    }
+    footer{
+      height:40px;
+      font-size:20px;
+      text-align:center;
+      background-color:skyblue;
+    }
+    </style>
+</head>
+
+<body>
+  {% include 'alerts.html' %}
+<header>
+<div class="navbar">
+  <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i> Logout</a> 
+  <a class="nav-link" href="{% url 'dashboard' %}">Welcome {{ user.username }} (Dashboard) </a>
+  <img src="{% static 'new.jpg' %}" alt="logo" width="50" height="50" style="vertical-align:top">
+</div>
+</header>
+
+<div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+    <div class="w3-sidebar w3-bar-block w3-light-grey ">
+
+      <a href="{% url 'show' %}" class="w3-bar-item w3-button">Post</a>
+      <div class="w3-dropdown-hover">
+          <button class="w3-button">Category
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button">Link 1</a>
+            <a href="#" class="w3-bar-item w3-button">Link 2</a>
+          </div>
+          <div style="margin-left:30%">
+              <div class="w3-container"></div>
+          </div>
+        </div>
+      </div>
+   <div style="margin-left:40%">{% block content %}{% endblock %}</div> 
+   
+</div>
+    <!-- Footer --> 
+<footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    Copyright &copy;
+   <span class="year"></span> POST PAGE
+</footer>
+   
+</body>
+</html> 
+
+
+
+
+
+
+     
+  
+

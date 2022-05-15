@@ -1,34 +1,36 @@
-{% extends 'enroll/base.html' %}
+{% extends 'dashboard.html' %}
 {% block content %}
-<div class="col-sm-7 offset_1">
-    <h4 class ="text-center alert alert-info"> Show Data </h4>
+<div><a href="{% url 'add' %}"  target="_blank"><button style= "margin-left:200px;">Add</button></a><br><br>
+</div>
+<div class="col-sm-4">
+    <h1 style="text-align:left,center"> Show All Data </h1>
      <table class="table">
        <thead>
-         <tr>
-           <th scope="col">ID</th>
-           <th scope="col">Title</th>
-           <th scope="col">Description</th>
-           <th scope="col">is_active</th> 
-           <th scope="col">Action</th>
-         </tr>
+             <tr>
+               <th scope="col">ID</th><br>
+               <th scope="col">Title</th>
+               <th scope="col">Description</th>
+               <th scope="col">Action</th>
+             </tr>
        </thead>
        <tbody>
-    {% for st in stu %}
+    {% if show %}
+    {% for st in show %}
           <tr>
             <th scope="row">{{st.id}}</th>
             <td>{{st.title}}</td>
             <td>{{st.description}}</td>
-            <td>
-             <a href="{% url 'updatedata' st.id %}" class= "btn
-              btn-warning btn-sm">Edit</a>
-             <form action ="{% url 'deletedata' st.id %}"
-              method="post" class="d-inline"> {% csrf_token %}
+            <td style="display:flex;">
+             <a href="{% url 'updatedata' st.id %}" class="d-inline"><button>Edit</button></a>
+             <form action ="{% url 'deletedata' st.id %}" method="POST" class="d-inline"> 
+               {% csrf_token %}
                <input type="submit" class="btn btn-danger"
                value="Delete">
-            </form>
+             </form>
             </td>
           </tr>
-         {% endfor %} 
+         {% endfor %}
+         {% endif %} 
        </tbody>
      </table><br>
  </div>

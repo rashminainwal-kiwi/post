@@ -1,11 +1,13 @@
-{% extends 'enroll/base.html' %}
+{% extends 'dashboard.html' %}
 {% block content %}
 <div class ="row">
   <div class ="col-sm-4">
-     <form action ="" method="POST">
+    <h1 class="text-center alert alert-info"> Add More Data</h1>
+     <form action ="" method="post">
        {% csrf_token %}
        {{form.as_p}}
        <input type ="submit" class="btn btn-success" value="Add">
      </form>
  </div>
+</div>
 {% endblock content %}
